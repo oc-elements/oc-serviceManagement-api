@@ -1,4 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-ajax/iron-ajax.html">
+<link rel="import" href="../oc-core-utils/oc-api-provider-behaviour.html">
 
 <!--
 `oc-serviceManagment-api`
@@ -8,25 +10,25 @@ Element to consume the Ordercloud service management API
 -->
 
 <dom-module id="oc-serviceManagment-api">
+
   <template>
-    <style>
-      :host {
-        display: block;
-      }
-    </style>
-    <h2>Hello [[prop1]]</h2>
+    <iron-ajax id="getApps"></iron-ajax>
   </template>
 
   <script>
     Polymer({
 
       is: 'oc-serviceManagment-api',
+      behaviors: [OC.Behaviours.ApiProvider],
 
-      properties: {
-        prop1: {
-          type: String,
-          value: 'oc-serviceManagment-api',
-        },
+      /**
+       * Retrieve available apps from a organisation.
+       *
+       * @return {Promise}
+       */
+      getApps: function(orgId) {
+        this.$.getApps.url = this._url('apps'+orgId);
+        return this._generateRequest(this.$.getApps);
       },
 
     });
