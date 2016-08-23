@@ -1,0 +1,34 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+`oc-serviceManagment-api`
+Element to consume the Ordercloud service management API
+
+@demo demo/index.html 
+-->
+
+<dom-module id="oc-serviceManagment-api">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]</h2>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'oc-serviceManagment-api',
+
+      properties: {
+        prop1: {
+          type: String,
+          value: 'oc-serviceManagment-api',
+        },
+      },
+
+    });
+  </script>
+</dom-module>
